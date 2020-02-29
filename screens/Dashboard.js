@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Text, Image } from 'react-native'
-
-import * as theme from '../theme';
-import Menu from '../components/Menu';
-import CustomHeader from '../components/CustomHeader'
+import * as theme from './../theme';
+import Menu from './../components/Menu';
+import CustomHeader from './../components/CustomHeader'
 
 class Dashboard extends Component {
     static navigationOptions = {

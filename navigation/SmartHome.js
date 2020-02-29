@@ -1,35 +1,21 @@
 import React from 'react';
-import { createStackNavigator } from 'react-navigation';
-import { Text } from 'react-native'
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import Dashboard from './../screens/Dashboard';
-import Settings from './../screens/Settings';
+import Settings from './../screens/Settings'
 
-export default createStackNavigator({
-  Dashboard,
-  Settings,
-}, {
-  initialRouteName: 'Dashboard',
-  defaultNavigationOptions: {
-    headerStyle: {
-      backgroundColor: '#F9F9F9',
-      borderBottomColor: "transparent",
-      elevation: 0, // for android
-      height: 0
-    },
-    headerTintColor: '#fff',
-    headerTitleStyle: {
-      fontWeight: 'bold',
-    },
-    headerBackImage: <Text>©</Text>,
-    headerLeftContainerStyle: {
-      alignItems: 'center',
-      marginLeft: 10,
-      paddingRight: 5,
-    },
-    headerRightContainerStyle: {
-      alignItems: 'center',
-      paddingRight: 5,
-    },
-  },
-});
+const Stack = createStackNavigator();
+
+function SmartHome() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Dashboard" component={Dashboard} />
+        <Stack.Screen name="Settings" component={Settings} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+export default SmartHome;

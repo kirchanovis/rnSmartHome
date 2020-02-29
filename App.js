@@ -1,19 +1,16 @@
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-
+import React from "react";
+import { StyleSheet } from "react-native";
 import SmartHome from './navigation/SmartHome';
 
-const Stack = createStackNavigator();
 
-function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="SmartHome" component={SmartHome} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
+export default class App extends React.Component {
+
+  render() {
+
+    return (
+      <SmartHome />
+    );
+  }
 }
 
-export default App;
+const styles = StyleSheet.create({});
