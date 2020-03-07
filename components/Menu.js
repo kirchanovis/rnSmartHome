@@ -8,7 +8,7 @@ import Bedroom from './icons/Bedroom'
 import Kitchen from './icons/Kitchen'
 import Livingroom from './icons/Livingroom'
 
-export default class Menu extends React.Component {
+export default class Menu extends Component {
   render() {
     return (
       <View style={styles.menu}>

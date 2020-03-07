@@ -5,7 +5,7 @@ import Avatar from './Avatar'
 import * as theme from '../theme';
 import MenuIcon from './icons/MenuIcon'
 
-export default class Menu extends React.Component {
+export default class Menu extends Component {
   render() {
     return (
       <View style={styles.header}>
@@ -28,37 +28,22 @@ export default class Menu extends React.Component {
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: '#eee',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    backgroundColor: 'transparent',
+    alignItems: 'center',
+    height: '100%'
   },
   headerLeft:{
     flex: 1,
-    backgroundColor: '#F5F5F5',
-    borderWidth: 1,
-    borderColor: '#eee',
     flexDirection: 'column'
   },
   headerRight: {
     flex: 2,
-    backgroundColor: '#F9F9F9',
     flexDirection: 'row-reverse',
   },
   blockCenter: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'center'
-  },
-  leftBlock:{
-    paddingTop: 15,
-    paddingRight: 15
-  },
-  iconMenu:{
-    width: 45,
-    height: 45,
-    borderRadius: 10, 
-    justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 5,
-    marginBottom: 5
   }
 });

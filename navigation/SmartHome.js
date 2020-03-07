@@ -1,19 +1,19 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import Dashboard from './../screens/Dashboard';
 import Settings from './../screens/Settings'
 
-const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
 function SmartHome() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Dashboard" component={Dashboard} />
-        <Stack.Screen name="Settings" component={Settings} />
-      </Stack.Navigator>
+      <Drawer.Navigator>
+        <Drawer.Screen name="Dashboard" component={Dashboard} />
+        <Drawer.Screen name="Settings" component={Settings} />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 }
