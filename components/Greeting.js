@@ -8,10 +8,10 @@ class Greeting extends Component {
         return (
             <View style={styles.greeting}>
                 <View style={styles.name}>
-                    <Text>Hello,</Text><Text>Anna</Text>
+                    <Text style={styles.hello} >Hello</Text><Text style={styles.nameText} >, Anna</Text>
                 </View>
                 <View>
-                    <Text>Good evening, what are you up to?</Text>
+                    <Text style={styles.question}>Good evening, what are you up to?</Text>
                 </View>
             </View>
         )
@@ -28,6 +28,20 @@ const styles = StyleSheet.create({
         height: '100%'
     },
     name: {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        paddingBottom: 10,
+        color: '#3a3434'
+    },
+    hello: {
+        fontSize: 20,
+        color: '#3a3434'
+    },
+    nameText: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: '#3a3434'
+    },
+    question: {
+        color: '#939090'
     }
 })

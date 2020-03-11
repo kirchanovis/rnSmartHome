@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Text } from 'react-native'
+import { StyleSheet, View, TouchableHighlight } from 'react-native'
 
 
 import * as theme from '../theme';
@@ -9,13 +9,23 @@ import Kitchen from './icons/Kitchen'
 import Livingroom from './icons/Livingroom'
 
 export default class Menu extends Component {
+  state = { isActive: false };
   render() {
     return (
       <View style={styles.menu}>
         <View>
-          <View style={styles.menuElem}>
-            <Bathroom />
-          </View>
+          <TouchableHighlight 
+            onPress={() => {
+              this.setState({ isActive: true })
+            }} 
+            underlayColor="#eee"
+          >
+            <View 
+              style={this.state.isActive ? styles.menuElemActive : styles.menuElem}
+            >
+              <Bathroom />
+            </View>
+          </TouchableHighlight>
         </View>
         <View>
           <View style={styles.menuElem}>
@@ -46,6 +56,16 @@ const styles = StyleSheet.create({
     width: 55,
     height: 55,
     backgroundColor: '#E7E7E7',
+    borderRadius: 10, 
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 5,
+    marginBottom: 5
+  },
+  menuElemActive: {
+    width: 75,
+    height: 75,
+    backgroundColor: '#ffc98f',
     borderRadius: 10, 
     justifyContent: 'center',
     alignItems: 'center',
