@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 5,
+      height: 7,
     },
     shadowOpacity: 0.2,
     shadowRadius: 4.65,

@@ -3,44 +3,59 @@ import { StyleSheet, View, TouchableHighlight } from 'react-native'
 
 
 import * as theme from '../theme';
-import Bathroom from './icons/Bathroom'
-import Bedroom from './icons/Bedroom'
-import Kitchen from './icons/Kitchen'
-import Livingroom from './icons/Livingroom'
+import BathroomIcon from './icons/BathroomIcon'
+import BedroomIcon from './icons/BedroomIcon'
+import KitchenIcon from './icons/KitchenIcon'
+import LivingroomIcon from './icons/LivingroomIcon'
 
 export default class Menu extends Component {
   state = { isActive: false };
   render() {
+    const { onPressFirst } = this.props;
+
     return (
       <View style={styles.menu}>
         <View>
           <TouchableHighlight 
-            onPress={() => {
-              this.setState({ isActive: true })
-            }} 
+            onPress={() => onPressFirst('Settings')} 
             underlayColor="#eee"
           >
-            <View 
-              style={this.state.isActive ? styles.menuElemActive : styles.menuElem}
-            >
-              <Bathroom />
+            <View style={styles.menuElem}>
+              <KitchenIcon />
             </View>
           </TouchableHighlight>
         </View>
         <View>
-          <View style={styles.menuElem}>
-            <Bedroom />
-          </View>
+          <TouchableHighlight 
+            onPress={() => onPressFirst('Settings')} 
+            underlayColor="#eee"
+          >
+            <View style={styles.menuElemActive}>
+              <LivingroomIcon active />
+            </View>
+          </TouchableHighlight>  
         </View>
         <View>
-          <View style={styles.menuElem}>
-            <Kitchen />
-          </View>
+          <TouchableHighlight 
+            onPress={() => onPressFirst('Settings')} 
+            underlayColor="#eee"
+          >
+            <View style={styles.menuElem}>
+              <BedroomIcon />
+            </View>
+          </TouchableHighlight>
         </View>
         <View>
-          <View style={styles.menuElem}>
-            <Livingroom />
-          </View>
+          <TouchableHighlight 
+            onPress={() => onPressFirst('Settings')} 
+            underlayColor="#eee"
+          >
+            <View 
+              style={styles.menuElem}
+            >
+              <BathroomIcon />
+            </View>
+          </TouchableHighlight>
         </View>
       </View>
     );
@@ -50,26 +65,34 @@ export default class Menu extends Component {
 const styles = StyleSheet.create({
   menu: {
     flexDirection: 'column',
-    alignItems: 'stretch',
+    alignItems: 'center',
   },
   menuElem: {
-    width: 55,
-    height: 55,
+    width: 64,
+    height: 64,
     backgroundColor: '#E7E7E7',
     borderRadius: 10, 
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 5,
-    marginBottom: 5
+    marginTop: 25,
+    marginBottom: 25
   },
   menuElemActive: {
-    width: 75,
-    height: 75,
+    width: 96,
+    height: 96,
     backgroundColor: '#ffc98f',
     borderRadius: 10, 
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 5,
-    marginBottom: 5
+    marginBottom: 5,
+    shadowColor: "#ffc98f",
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 4.65,
+    elevation: 2,
   }
 });

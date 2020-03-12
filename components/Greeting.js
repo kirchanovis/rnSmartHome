@@ -33,11 +33,11 @@ const styles = StyleSheet.create({
         color: '#3a3434'
     },
     hello: {
-        fontSize: 20,
+        fontSize: 26,
         color: '#3a3434'
     },
     nameText: {
-        fontSize: 20,
+        fontSize: 26,
         fontWeight: 'bold',
         color: '#3a3434'
     },

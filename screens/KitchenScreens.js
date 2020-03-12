@@ -26,7 +26,7 @@ class Dashboard extends Component {
                         <View style={styles.dashboardBody}>
                             <View style={styles.dashboardLeft}>
                                 <View style={styles.blockMenu}>
-                                    <Menu 
+                                    <Menu
                                         onPressFirst={(name) => {
                                             navigate(name)
                                         }} 
@@ -35,20 +35,12 @@ class Dashboard extends Component {
                             </View>
                             <View style={styles.dashboardRight}>
                                 <View style={styles.blockRoom}>
-                                    <View style={styles.blockRoomAux}>
+                                    <View style={styles.blockRoomAuth}>
                                         <Image
                                             style={styles.imageRoom}
                                             source={require('../assets/room.jpg')}
                                         />
                                     </View>
-                                    <View style={styles.imageTitleBlock}>
-                                        <Text style={styles.imageTitle}>
-                                            Living Room
-                                        </Text>
-                                    </View>
-                                </View>
-                                <View style={styles.temperature}>
-
                                 </View>
                             </View>
                         </View>
@@ -111,69 +103,25 @@ const styles = StyleSheet.create({
     },
     dashboardRight: {
         flex: 7,
-        flexDirection: 'column',
-        borderRadius: 25,
-        shadowColor: "#000",
-        shadowOffset: {
-          width: 0,
-          height: 5,
-        },
-        shadowOpacity: 0.2,
-        shadowRadius: 4.65,
-        elevation: 2,
     },
     blockRoom: {
-        flex: 2,
-        justifyContent: 'center',
-        zIndex: 2,
-        marginLeft: 20,
-        borderRadius: 20,
-        width: '80%',
-        overflow: 'hidden',
-        borderRadius: 25,
-        shadowColor: "#000",
-        shadowOffset: {
-          width: 5,
-          height: 30,
-        },
-        shadowOpacity: 0.3,
-        shadowRadius: 4.65,
-        elevation: 2,
-    },
-    temperature: {
         flex: 1,
-    },
-    blockRoomAux: {
-        position: 'relative',
         justifyContent: 'center',
-        zIndex: 3,
+        width: 200,
+        zIndex: 2,
+        overflow: 'hidden',
+    },
+    blockRoomAuth: {
+        position: 'relative',
+        justifyContent: 'center'
     },
     imageRoom: {
-        position: 'absolute',
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         zIndex: 1,
-        overflow: 'hidden'
-    },
-    imageTitleBlock: {
-        zIndex: 4,
-        position: 'absolute',
-        bottom: '5%',
-        left: '10%',
-        shadowColor: "#000",
-        shadowOffset: {
-          width: 0,
-          height: 0,
-        },
-        shadowOpacity: 0.9,
-        shadowRadius: 1.65,
-        elevation: 2
-    },
-    imageTitle: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: '#fff'
+        width: '50%',
+        height: '50%'
     },
     blockMenu: {
         flex: 1,
