@@ -11,49 +11,52 @@ import LivingroomIcon from './icons/LivingroomIcon'
 export default class Menu extends Component {
   state = { isActive: false };
   render() {
-    const { onPressFirst } = this.props;
+    const { 
+      onPressFirst,
+      active
+     } = this.props;
 
     return (
       <View style={styles.menu}>
         <View>
           <TouchableHighlight 
-            onPress={() => onPressFirst('Settings')} 
+            onPress={() => onPressFirst('Kitchen')} 
             underlayColor="#eee"
           >
-            <View style={styles.menuElem}>
-              <KitchenIcon />
+            <View style={active === 'kitchen' ? styles.menuElemActive : styles.menuElem}>
+              <KitchenIcon active={active === 'kitchen'} />
             </View>
           </TouchableHighlight>
         </View>
         <View>
           <TouchableHighlight 
-            onPress={() => onPressFirst('Settings')} 
+            onPress={() => onPressFirst('Livingroom')} 
             underlayColor="#eee"
           >
-            <View style={styles.menuElemActive}>
-              <LivingroomIcon active />
+            <View style={active === 'livingroom' ? styles.menuElemActive : styles.menuElem}>
+              <LivingroomIcon active={active === 'livingroom'} />
             </View>
           </TouchableHighlight>  
         </View>
         <View>
           <TouchableHighlight 
-            onPress={() => onPressFirst('Settings')} 
+            onPress={() => onPressFirst('Bedroom')} 
             underlayColor="#eee"
           >
-            <View style={styles.menuElem}>
-              <BedroomIcon />
+            <View style={active === 'bedroom' ? styles.menuElemActive : styles.menuElem}>
+              <BedroomIcon active={active === 'bedroom'}  />
             </View>
           </TouchableHighlight>
         </View>
         <View>
           <TouchableHighlight 
-            onPress={() => onPressFirst('Settings')} 
+            onPress={() => onPressFirst('Bathroom')} 
             underlayColor="#eee"
           >
             <View 
-              style={styles.menuElem}
+              style={active === 'bathroom' ? styles.menuElemActive : styles.menuElem}
             >
-              <BathroomIcon />
+              <BathroomIcon active={active === 'bathroom'} />
             </View>
           </TouchableHighlight>
         </View>

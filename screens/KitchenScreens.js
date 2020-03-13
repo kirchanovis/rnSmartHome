@@ -5,7 +5,7 @@ import Menu from './../components/Menu';
 import CustomHeader from './../components/CustomHeader'
 import Greeting from './../components/Greeting'
 
-class Dashboard extends Component {
+class KitchenScreens extends Component {
 
     render() {
         const { navigate } = this.props.navigation;
@@ -26,21 +26,30 @@ class Dashboard extends Component {
                         <View style={styles.dashboardBody}>
                             <View style={styles.dashboardLeft}>
                                 <View style={styles.blockMenu}>
-                                    <Menu
+                                    <Menu 
                                         onPressFirst={(name) => {
                                             navigate(name)
-                                        }} 
+                                        }}
+                                        active="kitchen"
                                     />
                                 </View>
                             </View>
                             <View style={styles.dashboardRight}>
                                 <View style={styles.blockRoom}>
-                                    <View style={styles.blockRoomAuth}>
+                                    <View style={styles.blockRoomAux}>
                                         <Image
                                             style={styles.imageRoom}
-                                            source={require('../assets/room.jpg')}
+                                            source={require('../assets/room/kitchen.jpg')}
                                         />
                                     </View>
+                                    <View style={styles.imageTitleBlock}>
+                                        <Text style={styles.imageTitle}>
+                                            Kitchen
+                                        </Text>
+                                    </View>
+                                </View>
+                                <View style={styles.temperature}>
+
                                 </View>
                             </View>
                         </View>
@@ -55,7 +64,7 @@ class Dashboard extends Component {
     }
 }
 
-export default Dashboard;
+export default KitchenScreens;
 
 const styles = StyleSheet.create({
     bg: {
@@ -103,25 +112,69 @@ const styles = StyleSheet.create({
     },
     dashboardRight: {
         flex: 7,
+        flexDirection: 'column',
+        borderRadius: 25,
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 5,
+        },
+        shadowOpacity: 0.2,
+        shadowRadius: 4.65,
+        elevation: 2,
     },
     blockRoom: {
-        flex: 1,
+        flex: 2,
         justifyContent: 'center',
-        width: 200,
         zIndex: 2,
+        marginLeft: 20,
+        borderRadius: 20,
+        width: '80%',
         overflow: 'hidden',
+        borderRadius: 25,
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 5,
+          height: 30,
+        },
+        shadowOpacity: 0.3,
+        shadowRadius: 4.65,
+        elevation: 2,
     },
-    blockRoomAuth: {
+    temperature: {
+        flex: 1,
+    },
+    blockRoomAux: {
         position: 'relative',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        zIndex: 3,
     },
     imageRoom: {
+        position: 'absolute',
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         zIndex: 1,
-        width: '50%',
-        height: '50%'
+        margin: -250
+    },
+    imageTitleBlock: {
+        zIndex: 4,
+        position: 'absolute',
+        bottom: '5%',
+        left: '10%',
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 0,
+        },
+        shadowOpacity: 0.9,
+        shadowRadius: 1.65,
+        elevation: 2
+    },
+    imageTitle: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: '#fff'
     },
     blockMenu: {
         flex: 1,
