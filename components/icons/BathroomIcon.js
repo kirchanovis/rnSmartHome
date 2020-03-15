@@ -13,7 +13,7 @@ export default class Bathroom extends Component {
 
     return (
       <Image
-      style={{width: active ? 40 : 20, height: active ? 44 : 22}}
+      style={{width: active ? 30 : 20, height: active ? 33 : 22}}
       source={{uri: active ? imgActive : img}}
       />
     );

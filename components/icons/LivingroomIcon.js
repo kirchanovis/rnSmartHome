@@ -13,7 +13,7 @@ export default class Livingroom extends Component {
 
     return (
       <Image
-        style={{width: active ? 42 : 24, height: active ? 32 : 18}}
+        style={{width: active ? 36 : 24, height: active ? 27 : 18}}
         source={{uri: active ? imgActive : img}}
       />
     );

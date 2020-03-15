@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Text, Image } from 'react-native'
+import { StyleSheet, View, Text, Image, FlatList } from 'react-native'
 import * as theme from './../theme';
 import Menu from './../components/Menu';
 import CustomHeader from './../components/CustomHeader'
@@ -31,6 +31,30 @@ class LivingroomScreens extends Component {
                                             navigate(name)
                                         }}
                                         active="livingroom"
+                                    />
+                                </View>
+                                <View style={styles.blockList}>
+                                    <FlatList
+                                        data={[
+                                            {label: 'Overview', active: true },
+                                            {label: 'Detail'}
+                                        ]}
+                                        renderItem={({item}) => 
+                                            <View style={styles.listElemBlock}>
+                                                <Text style={StyleSheet.flatten([styles.listElem, item.active && styles.listElemActive])}>{item.label}</Text>
+                                                {
+                                                    item.active ? (
+                                                        <View style={styles.listElemRoundBlock}>
+                                                            <View style={styles.listElemRound}></View>
+                                                        </View>  
+                                                    ) : (
+                                                        <View style={styles.listElemRoundBlock}>
+                                                            <View style={styles.listElemRoundNo}></View>
+                                                        </View>
+                                                    )
+                                                }
+                                            </View>
+                                        }
                                     />
                                 </View>
                             </View>
@@ -177,8 +201,47 @@ const styles = StyleSheet.create({
         color: '#fff'
     },
     blockMenu: {
-        flex: 1,
+        flex: 5,
         flexDirection: 'row',
         justifyContent: 'center'
+    },
+    blockList: {
+        flex: 2,
+        flexDirection: 'column'
+    },
+    listElem: {
+        flex: 1,
+        flexDirection: 'row',
+        color: '#d1cfcf',
+        fontWeight: 'bold',
+        textAlign: 'center',
+        padding: 25,
+
+    },
+    listElemActive: {
+        color: '#3a3434',
+    },
+    listElemRound: {
+        backgroundColor:'#ffc98f',
+        width: 7,
+        height: 7,
+        borderRadius: 7
+    },
+    listElemRoundNo: {
+        backgroundColor:'#f5f5f5',
+        width: 7,
+        height: 7,
+        borderRadius: 7
+    },
+    listElemRoundBlock: {
+        flex: 1,
+        alignItems: 'center',
+    },
+    listElemBlock: {
+        flexDirection: 'column',
+        transform: [{
+            rotate: '270deg'
+        }],
+        position: 'relative',
     }
 })

@@ -13,7 +13,7 @@ export default class Kitchen extends Component {
 
     return (
       <Image 
-        style={{width: active ? 42 : 24, height: active ? 35 : 20}}
+        style={{width: active ? 36 : 24, height: active ? 30 : 20}}
         source={{uri: active ? imgActive : img}}
       />
     );
