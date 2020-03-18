@@ -72,8 +72,13 @@ class LivingroomScreens extends Component {
                                         </Text>
                                     </View>
                                 </View>
-                                <View style={styles.temperature}>
+                                <View style={styles.wheather}>
+                                    <View style={styles.weatherBlock}>
 
+                                    </View>
+                                    <View style={styles.weatherBlock}>
+
+                                    </View>
                                 </View>
                             </View>
                         </View>
@@ -137,21 +142,15 @@ const styles = StyleSheet.create({
     dashboardRight: {
         flex: 7,
         flexDirection: 'column',
-        borderRadius: 25,
-        shadowColor: "#000",
-        shadowOffset: {
-          width: 0,
-          height: 5,
-        },
-        shadowOpacity: 0.2,
-        shadowRadius: 4.65,
-        elevation: 2,
+        borderRadius: 25
     },
     blockRoom: {
         flex: 2,
         justifyContent: 'center',
         zIndex: 2,
+        marginTop: 25,
         marginLeft: 20,
+        marginBottom: 40,
         borderRadius: 20,
         width: '80%',
         overflow: 'hidden',
@@ -165,8 +164,20 @@ const styles = StyleSheet.create({
         shadowRadius: 4.65,
         elevation: 2,
     },
-    temperature: {
+    wheather: {
         flex: 1,
+        flexDirection: 'row',
+        marginLeft: 20,
+        width: '100%',
+        marginBottom: 20
+    },
+    weatherBlock: {
+        flex: 1,
+        backgroundColor: '#fff',
+        margin: 10,
+        borderRadius: 15,
+        borderColor: '#eee', 
+        borderWidth: 1
     },
     blockRoomAux: {
         position: 'relative',
