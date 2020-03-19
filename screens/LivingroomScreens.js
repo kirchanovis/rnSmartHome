@@ -4,6 +4,8 @@ import * as theme from './../theme';
 import Menu from './../components/Menu';
 import CustomHeader from './../components/CustomHeader'
 import Greeting from './../components/Greeting'
+import Humidity from './../components/icons/Humidity'
+import Temperature from './../components/icons/Temperature'
 
 class LivingroomScreens extends Component {
 
@@ -74,19 +76,41 @@ class LivingroomScreens extends Component {
                                 </View>
                                 <View style={styles.wheather}>
                                     <View style={styles.weatherBlock}>
-
+                                        <View style={styles.weatherLeft}></View>
+                                            <View style={styles.weatherContent}>
+                                                <View style={styles.wContentTop}>
+                                                    <Temperature/>
+                                                </View>
+                                                <View style={styles.wContentBottom}>
+                                                    <View style={styles.wContentCelc}>
+                                                        <Text style={styles.wContentNum}>24</Text>
+                                                        <Text style={styles.wContentTitle}>°C</Text>
+                                                    </View>
+                                                    <Text style={styles.wContentText}>Temperature</Text>
+                                                </View>
+                                            </View>
+                                        <View style={styles.weatherRight}></View>
                                     </View>
                                     <View style={styles.weatherBlock}>
-
+                                        <View style={styles.weatherLeft}></View>
+                                            <View style={styles.weatherContent}>
+                                                <View style={styles.wContentTop}>
+                                                    <Humidity/>
+                                                </View>
+                                                <View style={styles.wContentBottom}>
+                                                    <View style={styles.wContentCelc}>
+                                                        <Text style={styles.wContentNum}>82</Text>
+                                                        <Text style={styles.wContentTitle}>%</Text>
+                                                    </View>
+                                                    <Text style={styles.wContentText}>Humidity</Text>
+                                                </View>
+                                            </View>
+                                        <View style={styles.weatherRight}></View>
                                     </View>
                                 </View>
                             </View>
                         </View>
-                        
                     </View>
-                    {/*<View style={styles.textAbsolute}>
-                        
-                    </View>*/}
                 </View>
             </>
         )
@@ -177,7 +201,44 @@ const styles = StyleSheet.create({
         margin: 10,
         borderRadius: 15,
         borderColor: '#eee', 
-        borderWidth: 1
+        borderWidth: 1,
+        flexDirection: 'row'
+    },
+    weatherContent: {
+        marginTop: 20,
+        marginBottom: 20,
+        flex: 10,
+        flexDirection: 'column'
+    },
+    weatherLeft: {
+        flex: 2
+    },
+    weatherRight: {
+        flex: 2
+    },
+    wContentTop: {
+        flex: 2
+    },
+    wContentBottom: {
+        flex: 2
+    },
+    wContentCelc: {
+        flexDirection: 'row',
+        color: '#434141',
+        paddingTop: 10
+    },
+    wContentNum: {
+        fontSize: 28,
+        color: '#434141'
+    },
+    wContentTitle: {
+        fontSize: 14,
+        paddingTop: 2,
+        paddingLeft: 2
+    },
+    wContentText: {
+        paddingTop: 10,
+        color: '#a1a0a0'
     },
     blockRoomAux: {
         position: 'relative',
