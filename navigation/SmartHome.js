@@ -6,6 +6,8 @@ import LivingroomScreens from './../screens/LivingroomScreens'
 import KitchenScreens from './../screens/KitchenScreens'
 import BedroomScreens from './../screens/BedroomScreens'
 import BathroomScreens from './../screens/BathroomScreens'
+import Settings from './../screens/Settings'
+
 
 
 
@@ -20,6 +22,7 @@ function SmartHome() {
         <Drawer.Screen name="Kitchen" component={KitchenScreens} />
         <Drawer.Screen name="Bedroom" component={BedroomScreens} />
         <Drawer.Screen name="Bathroom" component={BathroomScreens} />
+        <Drawer.Screen name="Settings" component={Settings} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
