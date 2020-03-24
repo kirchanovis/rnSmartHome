@@ -4,6 +4,7 @@ import { StyleSheet, View, Text, Image, Switch, Slider } from 'react-native';
 import * as theme from '../theme';
 import CustomHeader from './../components/CustomHeader'
 import PickerTime from './../components/PickerTime'
+import Music from './../components/Music'
 
 class Settings extends Component {
   state = { 
@@ -60,7 +61,7 @@ class Settings extends Component {
               />
             </View>
             <View style={styles.footer}>
-              
+              <Music />
             </View>
           </View>
         </View>
