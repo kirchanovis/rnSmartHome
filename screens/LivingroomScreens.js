@@ -10,7 +10,7 @@ import Temperature from './../components/icons/Temperature'
 class LivingroomScreens extends Component {
 
     render() {
-        const { navigate } = this.props.navigation;
+        const { navigate, openDrawer } = this.props.navigation;
 
         return (
             <>
@@ -20,7 +20,11 @@ class LivingroomScreens extends Component {
                 <View style={styles.dashboard}>
                     <View style={styles.dashboardWrapper}>
                         <View style={styles.dashboardHeader}>
-                            <CustomHeader />
+                            <CustomHeader
+                                onPressDrawer={() => {
+                                    openDrawer()
+                                }}
+                            />
                         </View>
                         <View style={styles.dashboardTitle}>
                             <Greeting />
@@ -28,7 +32,7 @@ class LivingroomScreens extends Component {
                         <View style={styles.dashboardBody}>
                             <View style={styles.dashboardLeft}>
                                 <View style={styles.blockMenu}>
-                                    <Menu 
+                                    <Menu
                                         onPressFirst={(name) => {
                                             navigate(name)
                                         }}
@@ -38,22 +42,22 @@ class LivingroomScreens extends Component {
                                 <View style={styles.blockList}>
                                     <FlatList
                                         data={[
-                                            {label: 'Overview', active: true },
-                                            {label: 'Detail'}
+                                            { label: 'Overview', active: true },
+                                            { label: 'Detail' }
                                         ]}
-                                        renderItem={({item}) => 
+                                        renderItem={({ item }) =>
                                             <View style={styles.listElemBlock}>
                                                 <Text style={StyleSheet.flatten([styles.listElem, item.active && styles.listElemActive])}>{item.label}</Text>
                                                 {
                                                     item.active ? (
                                                         <View style={styles.listElemRoundBlock}>
                                                             <View style={styles.listElemRound}></View>
-                                                        </View>  
-                                                    ) : (
-                                                        <View style={styles.listElemRoundBlock}>
-                                                            <View style={styles.listElemRoundNo}></View>
                                                         </View>
-                                                    )
+                                                    ) : (
+                                                            <View style={styles.listElemRoundBlock}>
+                                                                <View style={styles.listElemRoundNo}></View>
+                                                            </View>
+                                                        )
                                                 }
                                             </View>
                                         }
@@ -77,34 +81,34 @@ class LivingroomScreens extends Component {
                                 <View style={styles.wheather}>
                                     <View style={styles.weatherBlock}>
                                         <View style={styles.weatherLeft}></View>
-                                            <View style={styles.weatherContent}>
-                                                <View style={styles.wContentTop}>
-                                                    <Temperature/>
-                                                </View>
-                                                <View style={styles.wContentBottom}>
-                                                    <View style={styles.wContentCelc}>
-                                                        <Text style={styles.wContentNum}>24</Text>
-                                                        <Text style={styles.wContentTitle}>°C</Text>
-                                                    </View>
-                                                    <Text style={styles.wContentText}>Temperature</Text>
-                                                </View>
+                                        <View style={styles.weatherContent}>
+                                            <View style={styles.wContentTop}>
+                                                <Temperature />
                                             </View>
+                                            <View style={styles.wContentBottom}>
+                                                <View style={styles.wContentCelc}>
+                                                    <Text style={styles.wContentNum}>24</Text>
+                                                    <Text style={styles.wContentTitle}>°C</Text>
+                                                </View>
+                                                <Text style={styles.wContentText}>Temperature</Text>
+                                            </View>
+                                        </View>
                                         <View style={styles.weatherRight}></View>
                                     </View>
                                     <View style={styles.weatherBlock}>
                                         <View style={styles.weatherLeft}></View>
-                                            <View style={styles.weatherContent}>
-                                                <View style={styles.wContentTop}>
-                                                    <Humidity/>
-                                                </View>
-                                                <View style={styles.wContentBottom}>
-                                                    <View style={styles.wContentCelc}>
-                                                        <Text style={styles.wContentNum}>82</Text>
-                                                        <Text style={styles.wContentTitle}>%</Text>
-                                                    </View>
-                                                    <Text style={styles.wContentText}>Humidity</Text>
-                                                </View>
+                                        <View style={styles.weatherContent}>
+                                            <View style={styles.wContentTop}>
+                                                <Humidity />
                                             </View>
+                                            <View style={styles.wContentBottom}>
+                                                <View style={styles.wContentCelc}>
+                                                    <Text style={styles.wContentNum}>82</Text>
+                                                    <Text style={styles.wContentTitle}>%</Text>
+                                                </View>
+                                                <Text style={styles.wContentText}>Humidity</Text>
+                                            </View>
+                                        </View>
                                         <View style={styles.weatherRight}></View>
                                     </View>
                                 </View>
@@ -129,10 +133,10 @@ const styles = StyleSheet.create({
         borderColor: '#f9f9f9'
     },
     leftBg: {
-        width: '30%', 
-        height: '100%', 
-        backgroundColor: '#f5f5f5', 
-        borderColor: '#eeeeee', 
+        width: '30%',
+        height: '100%',
+        backgroundColor: '#f5f5f5',
+        borderColor: '#eeeeee',
         borderWidth: 2
     },
     dashboard: {
@@ -181,8 +185,8 @@ const styles = StyleSheet.create({
         borderRadius: 25,
         shadowColor: "#000",
         shadowOffset: {
-          width: 5,
-          height: 30,
+            width: 5,
+            height: 30,
         },
         shadowOpacity: 0.3,
         shadowRadius: 4.65,
@@ -200,7 +204,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         margin: 10,
         borderRadius: 15,
-        borderColor: '#eee', 
+        borderColor: '#eee',
         borderWidth: 1,
         flexDirection: 'row'
     },
@@ -260,8 +264,8 @@ const styles = StyleSheet.create({
         left: '10%',
         shadowColor: "#000",
         shadowOffset: {
-          width: 0,
-          height: 0,
+            width: 0,
+            height: 0,
         },
         shadowOpacity: 0.9,
         shadowRadius: 1.65,
@@ -294,13 +298,13 @@ const styles = StyleSheet.create({
         color: '#3a3434',
     },
     listElemRound: {
-        backgroundColor:'#ffc98f',
+        backgroundColor: '#ffc98f',
         width: 7,
         height: 7,
         borderRadius: 7
     },
     listElemRoundNo: {
-        backgroundColor:'#f5f5f5',
+        backgroundColor: '#f5f5f5',
         width: 7,
         height: 7,
         borderRadius: 7

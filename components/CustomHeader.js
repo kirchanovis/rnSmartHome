@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Text } from 'react-native'
+import { StyleSheet, View, TouchableOpacity } from 'react-native'
 import Avatar from './Avatar'
 
 import * as theme from '../theme';
 import MenuIcon from './icons/MenuIcon'
 
 export default class Menu extends Component {
+
   render() {
+    const { onPressDrawer } = this.props;
+    
     return (
       <View style={styles.header}>
         <View style={styles.headerLeft}>
@@ -17,7 +20,11 @@ export default class Menu extends Component {
         <View style={styles.headerRight}>
           <View style={styles.leftBlock}>
             <View style={styles.iconMenu}>
-              <MenuIcon />
+              <TouchableOpacity
+                onPress={() => onPressDrawer()}
+              >
+                <MenuIcon />
+              </TouchableOpacity>
             </View>
           </View>
         </View>

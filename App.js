@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useReducer } from "react";
 import { StyleSheet } from "react-native";
 import SmartHome from './navigation/SmartHome';
+import { Context } from './context'
+import reducer from './reducers'
 
-
-export default class App extends React.Component {
-
-  render() {
+function App() {
+  const initialState = reducer({}, { type: '__INIT__' }),
+    [state, dispatch] = useReducer(reducer, initialState);
 
     return (
-      <SmartHome />
+      <Context.Provider 
+        value={{ dispatch, state }}
+      >
+        <SmartHome />
+      </Context.Provider>
     );
-  }
 }
+
+export default App;
 
 const styles = StyleSheet.create({});
