@@ -5,6 +5,7 @@ import BedroomIcon from './icons/BedroomIcon'
 import LivingroomIcon from './icons/LivingroomIcon'
 import { Context } from './../context'
 import { getMenu } from './../actions/menu';
+import { getDashboard } from './../actions/dashboard';
 import { StyleSheet, View, TouchableHighlight } from 'react-native'
 
 import * as theme from '../theme';
@@ -25,7 +26,12 @@ function Menu(props) {
 
   useEffect(() => {
     getMenu(dispatch)
+    getDashboard(dispatch, 1)
   }, [])
+
+  function updateDashboard(id) {
+    getDashboard(dispatch, id)
+  }
 
   return (
     <View style={styles.menu}>
@@ -33,7 +39,7 @@ function Menu(props) {
         state.menu.data.map( item => 
           <View key={item.key}>
             <TouchableHighlight
-              onPress={() => { props.onPressFirst('Dashboard') }}
+              onPress={() => { updateDashboard(item.key) }}
               underlayColor="#eee"
             >
               <View style={StyleSheet.flatten([styles.menuElem, props.active === item.name && styles.menuElemActive])}>
@@ -48,68 +54,6 @@ function Menu(props) {
 }
 
 export default Menu;
-
-/*export default class Menu extends Component {
-  state = {
-    isActive: false,
-    fadeValue: new Animated.Value(1),
-    fadeColor: new Animated.Value(0)
-  };
-
-  render() {
-    const {
-      onPressFirst,
-      active
-    } = this.props;
-
-    return (
-      <View style={styles.menu}>
-        <View>
-          <TouchableHighlight
-            onPress={() => { onPressFirst('Kitchen') }}
-            underlayColor="#eee"
-          >
-            <View style={StyleSheet.flatten([styles.menuEle, active === 'kitchen' && styles.menuElemActive])}>
-              <KitchenIcon active={active === 'kitchen'} />
-            </View>
-          </TouchableHighlight>
-        </View>
-        <View>
-          <TouchableHighlight
-            onPress={() => { onPressFirst('Livingroom') }}
-            underlayColor="#eee"
-          >
-            <View style={StyleSheet.flatten([styles.menuElem, active === 'livingroom' && styles.menuElemActive])}>
-              <LivingroomIcon active={active === 'livingroom'} />
-            </View>
-          </TouchableHighlight>
-        </View>
-        <View>
-          <TouchableHighlight
-            onPress={() => onPressFirst('Bedroom')}
-            underlayColor="#eee"
-          >
-            <View style={StyleSheet.flatten([styles.menuElem, active === 'bedroom' && styles.menuElemActive])}>
-              <BedroomIcon active={active === 'bedroom'} />
-            </View>
-          </TouchableHighlight>
-        </View>
-        <View>
-          <TouchableHighlight
-            onPress={() => onPressFirst('Bathroom')}
-            underlayColor="#eee"
-          >
-            <View
-              style={StyleSheet.flatten([styles.menuElem, active === 'bathroom' && styles.menuElemActive])}
-            >
-              <BathroomIcon active={active === 'bathroom'} />
-            </View>
-          </TouchableHighlight>
-        </View>
-      </View>
-    );
-  }
-}*/
 
 const styles = StyleSheet.create({
   menu: {

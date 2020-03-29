@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useContext } from 'react'
 import { StyleSheet, View, Text, Image, Switch, Slider } from 'react-native';
 
 import * as theme from '../theme';
@@ -6,74 +6,79 @@ import CustomHeader from './../components/CustomHeader'
 import PickerTime from './../components/PickerTime'
 import Music from './../components/Music'
 
-class Settings extends Component {
-  state = {
-    timeStart: '08:00',
-    timeEnd: '23:00',
-  };
+import { Context } from './../context'
 
-  render() {
-    const { openDrawer } = this.props.navigation;
+function Settings(props) {
+  const { state } = useContext(Context),
+    { openDrawer } = props.navigation,
+    { data } = state.dashboard
 
-    return (
-      <>
-        <View style={styles.bg}>
-          <View style={styles.bgLeft}></View>
-          <View style={styles.bgRight}>
-            <View style={styles.bgRightTop}>
-              <Image
-                style={styles.imageRoom}
-                source={require('../assets/light.png')}
-              />
-            </View>
-            <View style={styles.bgRightBottom}></View>
-          </View>
-        </View>
-        <View style={styles.content}>
-          <View style={styles.contentWrapper}>
-            <View style={styles.header}>
-              <CustomHeader
-                onPressDrawer={() => {
-                  openDrawer()
-                }}
-              />
-            </View>
-            <View style={styles.contentTop}>
-              <View style={styles.title}>
-                <Text style={styles.titleText} >Main</Text><Text style={styles.titleBold} > Light</Text>
-              </View>
-              <View style={styles.formBlock}>
-                <View style={styles.formElem}>
-                  <Text style={styles.formTitle}>Power</Text>
-                  <Switch
-                    style={styles.formSwitch}
-                    trackColor={{ false: '#d4d4d4', true: '#fec88e' }}
-                    ios_backgroundColor="#d4d4d4" value={true}
+  return (
+    <>
+      {
+        data && (
+          <>
+            <View style={styles.bg}>
+              <View style={styles.bgLeft}></View>
+              <View style={styles.bgRight}>
+                <View style={styles.bgRightTop}>
+                  <Image
+                    style={styles.imageRoom}
+                    source={data.light && data.light.image}
                   />
                 </View>
-                <View style={styles.formElem}>
-                  <Text style={styles.formTitle}>Intensity</Text>
-                  <Slider
-                    style={styles.slider}
-                    minimumTrackTintColor="#fec88e"
+                <View style={styles.bgRightBottom}></View>
+              </View>
+            </View>
+            <View style={styles.content}>
+              <View style={styles.contentWrapper}>
+                <View style={styles.header}>
+                  <CustomHeader
+                    onPressDrawer={() => {
+                      openDrawer()
+                    }}
                   />
+                </View>
+                <View style={styles.contentTop}>
+                  <View style={styles.title}>
+                    <Text style={styles.titleText} >Main</Text><Text style={styles.titleBold} > Light</Text>
+                  </View>
+                  <View style={styles.formBlock}>
+                    <View style={styles.formElem}>
+                      <Text style={styles.formTitle}>Power</Text>
+                      <Switch
+                        style={styles.formSwitch}
+                        trackColor={{ false: '#d4d4d4', true: '#fec88e' }}
+                        ios_backgroundColor="#d4d4d4" 
+                        value={data.light && data.light.power}
+                      />
+                    </View>
+                    <View style={styles.formElem}>
+                      <Text style={styles.formTitle}>Intensity</Text>
+                      <Slider
+                        style={styles.slider}
+                        minimumTrackTintColor="#fec88e"
+                        value={data.light && data.light.intensity}
+                      />
+                    </View>
+                  </View>
+                </View>
+                <View style={styles.contentBottom}>
+                  <PickerTime
+                    start={data.light && data.light.schFrom}
+                    end={data.light && data.light.schTo}
+                  />
+                </View>
+                <View style={styles.footer}>
+                  <Music />
                 </View>
               </View>
             </View>
-            <View style={styles.contentBottom}>
-              <PickerTime
-                start={this.state.timeStart}
-                end={this.state.timeEnd}
-              />
-            </View>
-            <View style={styles.footer}>
-              <Music />
-            </View>
-          </View>
-        </View>
-      </>
-    )
-  }
+          </>
+        )
+      }
+    </>
+  );
 }
 
 export default Settings;
@@ -103,9 +108,10 @@ const styles = StyleSheet.create({
     flex: 2
   },
   imageRoom: {
-    width: '100%',
-    height: '100%',
-    padding: 20
+    width: 250,
+    height: 250,
+    padding: 20,
+    resizeMode: 'contain'
   },
   content: {
     position: 'absolute',

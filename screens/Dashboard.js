@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useContext } from 'react'
 import { StyleSheet, View, Text, Image, FlatList } from 'react-native'
 import * as theme from './../theme';
 import Menu from './../components/Menu';
@@ -8,122 +8,115 @@ import Humidity from './../components/icons/Humidity'
 import Temperature from './../components/icons/Temperature'
 
 import { Context } from './../context'
-import { getDashboard } from './../actions/dashboard';
 
 function Dashboard(props) {
-    const { state, dispatch } = useContext(Context),
-        { navigate, openDrawer } = props.navigation;
-  
-    useEffect(() => {
-        getDashboard(dispatch)
-    }, [])
+    const { state } = useContext(Context),
+        { openDrawer } = props.navigation,
+        { data } = state.dashboard
 
     return (
-<>
-                <View style={styles.bg}>
-                    <View style={styles.leftBg} />
-                </View>
-                <View style={styles.dashboard}>
-                    <View style={styles.dashboardWrapper}>
-                        <View style={styles.dashboardHeader}>
-                            <CustomHeader
-                                onPressDrawer={() => {
-                                    openDrawer()
-                                }}
-                            />
+        <>
+            <View style={styles.bg}>
+                <View style={styles.leftBg} />
+            </View>
+            <View style={styles.dashboard}>
+                <View style={styles.dashboardWrapper}>
+                    <View style={styles.dashboardHeader}>
+                        <CustomHeader
+                            onPressDrawer={() => {
+                                openDrawer()
+                            }}
+                        />
+                    </View>
+                    <View style={styles.dashboardTitle}>
+                        <Greeting />
+                    </View>
+                    <View style={styles.dashboardBody}>
+                        <View style={styles.dashboardLeft}>
+                            <View style={styles.blockMenu}>
+                                <Menu
+                                    active={data && data.value}
+                                />
+                            </View>
+                            <View style={styles.blockList}>
+                                <FlatList
+                                    data={[
+                                        { label: 'Overview', active: true },
+                                        { label: 'Detail' }
+                                    ]}
+                                    renderItem={({ item }) =>
+                                        <View style={styles.listElemBlock}>
+                                            <Text style={StyleSheet.flatten([styles.listElem, item.active && styles.listElemActive])}>{item.label}</Text>
+                                            {
+                                                item.active ? (
+                                                    <View style={styles.listElemRoundBlock}>
+                                                        <View style={styles.listElemRound}></View>
+                                                    </View>
+                                                ) : (
+                                                    <View style={styles.listElemRoundBlock}>
+                                                        <View style={styles.listElemRoundNo}></View>
+                                                    </View>
+                                                )
+                                            }
+                                        </View>
+                                    }
+                                />
+                            </View>
                         </View>
-                        <View style={styles.dashboardTitle}>
-                            <Greeting />
-                        </View>
-                        <View style={styles.dashboardBody}>
-                            <View style={styles.dashboardLeft}>
-                                <View style={styles.blockMenu}>
-                                    <Menu
-                                        onPressFirst={(name) => {
-                                            navigate(name)
-                                        }}
-                                        active="livingroom"
+                        <View style={styles.dashboardRight}>
+                            <View style={styles.blockRoom}>
+                                <View style={styles.blockRoomAux}>
+                                    <Image
+                                        style={styles.imageRoom}
+                                        source={data && data.image}
                                     />
                                 </View>
-                                <View style={styles.blockList}>
-                                    <FlatList
-                                        data={[
-                                            { label: 'Overview', active: true },
-                                            { label: 'Detail' }
-                                        ]}
-                                        renderItem={({ item }) =>
-                                            <View style={styles.listElemBlock}>
-                                                <Text style={StyleSheet.flatten([styles.listElem, item.active && styles.listElemActive])}>{item.label}</Text>
-                                                {
-                                                    item.active ? (
-                                                        <View style={styles.listElemRoundBlock}>
-                                                            <View style={styles.listElemRound}></View>
-                                                        </View>
-                                                    ) : (
-                                                            <View style={styles.listElemRoundBlock}>
-                                                                <View style={styles.listElemRoundNo}></View>
-                                                            </View>
-                                                        )
-                                                }
-                                            </View>
-                                        }
-                                    />
+                                <View style={styles.imageTitleBlock}>
+                                    <Text style={styles.imageTitle}>
+                                        {data && data.name}
+                                    </Text>
                                 </View>
                             </View>
-                            <View style={styles.dashboardRight}>
-                                <View style={styles.blockRoom}>
-                                    <View style={styles.blockRoomAux}>
-                                        <Image
-                                            style={styles.imageRoom}
-                                            source={require('../assets/room/livingroom.jpg')}
-                                        />
+                            <View style={styles.wheather}>
+                                <View style={styles.weatherBlock}>
+                                    <View style={styles.weatherLeft}></View>
+                                    <View style={styles.weatherContent}>
+                                        <View style={styles.wContentTop}>
+                                            <Temperature />
+                                        </View>
+                                        <View style={styles.wContentBottom}>
+                                            <View style={styles.wContentCelc}>
+                                                <Text style={styles.wContentNum}>{data && data.temperature}</Text>
+                                                <Text style={styles.wContentTitle}>°C</Text>
+                                            </View>
+                                            <Text style={styles.wContentText}>Temperature</Text>
+                                        </View>
                                     </View>
-                                    <View style={styles.imageTitleBlock}>
-                                        <Text style={styles.imageTitle}>
-                                            Living Room
-                                        </Text>
-                                    </View>
+                                    <View style={styles.weatherRight}></View>
                                 </View>
-                                <View style={styles.wheather}>
-                                    <View style={styles.weatherBlock}>
-                                        <View style={styles.weatherLeft}></View>
-                                        <View style={styles.weatherContent}>
-                                            <View style={styles.wContentTop}>
-                                                <Temperature />
-                                            </View>
-                                            <View style={styles.wContentBottom}>
-                                                <View style={styles.wContentCelc}>
-                                                    <Text style={styles.wContentNum}>24</Text>
-                                                    <Text style={styles.wContentTitle}>°C</Text>
-                                                </View>
-                                                <Text style={styles.wContentText}>Temperature</Text>
-                                            </View>
+                                <View style={styles.weatherBlock}>
+                                    <View style={styles.weatherLeft}></View>
+                                    <View style={styles.weatherContent}>
+                                        <View style={styles.wContentTop}>
+                                            <Humidity />
                                         </View>
-                                        <View style={styles.weatherRight}></View>
-                                    </View>
-                                    <View style={styles.weatherBlock}>
-                                        <View style={styles.weatherLeft}></View>
-                                        <View style={styles.weatherContent}>
-                                            <View style={styles.wContentTop}>
-                                                <Humidity />
+                                        <View style={styles.wContentBottom}>
+                                            <View style={styles.wContentCelc}>
+                                                <Text style={styles.wContentNum}>{data && data.humidity}</Text>
+                                                <Text style={styles.wContentTitle}>%</Text>
                                             </View>
-                                            <View style={styles.wContentBottom}>
-                                                <View style={styles.wContentCelc}>
-                                                    <Text style={styles.wContentNum}>82</Text>
-                                                    <Text style={styles.wContentTitle}>%</Text>
-                                                </View>
-                                                <Text style={styles.wContentText}>Humidity</Text>
-                                            </View>
+                                            <Text style={styles.wContentText}>Humidity</Text>
                                         </View>
-                                        <View style={styles.weatherRight}></View>
                                     </View>
+                                    <View style={styles.weatherRight}></View>
                                 </View>
                             </View>
                         </View>
                     </View>
                 </View>
-            </>
-      );
+            </View>
+        </>
+    );
 }
 
 export default Dashboard;

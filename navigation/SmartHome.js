@@ -9,10 +9,6 @@ import {
  } from '@react-navigation/drawer';
  import { StyleSheet } from 'react-native'
  import Animated from 'react-native-reanimated';
-import LivingroomScreens from './../screens/LivingroomScreens'
-import KitchenScreens from './../screens/KitchenScreens'
-import BedroomScreens from './../screens/BedroomScreens'
-import BathroomScreens from './../screens/BathroomScreens'
 import Settings from './../screens/Settings'
 import Dashboard from './../screens/Dashboard'
 

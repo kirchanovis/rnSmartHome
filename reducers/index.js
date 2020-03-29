@@ -4,7 +4,7 @@ import MenuReducers from './menu'
 
 const allReducers = combineReducers({
     menu: MenuReducers,
-    dashborad: DashboardReducers
+    dashboard: DashboardReducers
 });
 
 export default allReducers;

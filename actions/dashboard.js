@@ -14,10 +14,10 @@ export const get = (payload) => ({
 });
 
 
-export const getDashboard = (dispatch) => {
+export const getDashboard = (dispatch, id) => {
         dispatch(loading())
         
-        getDashboardApi()
+        getDashboardApi(id)
             .then((req) => {
                 dispatch(success())
                 dispatch(get(req.data))
