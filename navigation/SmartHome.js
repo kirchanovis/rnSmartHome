@@ -14,6 +14,7 @@ import KitchenScreens from './../screens/KitchenScreens'
 import BedroomScreens from './../screens/BedroomScreens'
 import BathroomScreens from './../screens/BathroomScreens'
 import Settings from './../screens/Settings'
+import Dashboard from './../screens/Dashboard'
 
 const Drawer = createDrawerNavigator();
 
@@ -32,7 +33,7 @@ function CustomDrawerContent(props) {
         label="Custom1"
         labelStyle={styles.drawerLabel}
         style={styles.drawerItem}
-        onPress={() => props.navigation.navigate('Livingroom')}
+        onPress={() => props.navigation.navigate('Dashboard')}
       />
     </DrawerContentScrollView>
   );
@@ -63,7 +64,7 @@ function SmartHome() {
           return <CustomDrawerContent {...props} />;
         }}
       >
-        <Drawer.Screen name="Livingroom" component={LivingroomScreens} />
+        <Drawer.Screen name="Dashboard" component={Dashboard} />
         <Drawer.Screen name="Settings" component={Settings} />
       </Drawer.Navigator>
     </NavigationContainer>

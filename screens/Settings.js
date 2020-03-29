@@ -7,12 +7,14 @@ import PickerTime from './../components/PickerTime'
 import Music from './../components/Music'
 
 class Settings extends Component {
-  state = { 
+  state = {
     timeStart: '08:00',
     timeEnd: '23:00',
   };
 
   render() {
+    const { openDrawer } = this.props.navigation;
+
     return (
       <>
         <View style={styles.bg}>
@@ -30,7 +32,11 @@ class Settings extends Component {
         <View style={styles.content}>
           <View style={styles.contentWrapper}>
             <View style={styles.header}>
-              <CustomHeader />
+              <CustomHeader
+                onPressDrawer={() => {
+                  openDrawer()
+                }}
+              />
             </View>
             <View style={styles.contentTop}>
               <View style={styles.title}>
@@ -39,9 +45,9 @@ class Settings extends Component {
               <View style={styles.formBlock}>
                 <View style={styles.formElem}>
                   <Text style={styles.formTitle}>Power</Text>
-                  <Switch 
-                    style={styles.formSwitch} 
-                    trackColor={{false: '#d4d4d4', true: '#fec88e'}} 
+                  <Switch
+                    style={styles.formSwitch}
+                    trackColor={{ false: '#d4d4d4', true: '#fec88e' }}
                     ios_backgroundColor="#d4d4d4" value={true}
                   />
                 </View>

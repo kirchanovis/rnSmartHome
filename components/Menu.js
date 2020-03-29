@@ -1,11 +1,11 @@
-import React, { useEffect, useContext, useState } from 'react'
+import React, { useEffect, useContext } from 'react'
 import KitchenIcon from './icons/KitchenIcon'
 import BathroomIcon from './icons/BathroomIcon'
 import BedroomIcon from './icons/BedroomIcon'
 import LivingroomIcon from './icons/LivingroomIcon'
 import { Context } from './../context'
 import { getMenu } from './../actions/menu';
-import { StyleSheet, View, TouchableHighlight, Text } from 'react-native'
+import { StyleSheet, View, TouchableHighlight } from 'react-native'
 
 import * as theme from '../theme';
 
@@ -33,7 +33,7 @@ function Menu(props) {
         state.menu.data.map( item => 
           <View key={item.key}>
             <TouchableHighlight
-              onPress={() => { props.onPressFirst(item.screen) }}
+              onPress={() => { props.onPressFirst('Dashboard') }}
               underlayColor="#eee"
             >
               <View style={StyleSheet.flatten([styles.menuElem, props.active === item.name && styles.menuElemActive])}>

@@ -3,8 +3,6 @@ import BedroomIcon from './../../components/icons/BedroomIcon'
 import KitchenIcon from './../../components/icons/KitchenIcon'
 import LivingroomIcon from './../../components/icons/LivingroomIcon'
 
-KitchenIcon
-
 export const menu = [
     {
         key: 0,
