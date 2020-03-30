@@ -11,7 +11,7 @@ export default class PauseIcon extends Component {
 
     return (
       <Image
-      style={{width: 16, height: 16}}
+      style={{width: 15, height: 15}}
       source={{uri: img}}
       />
     );

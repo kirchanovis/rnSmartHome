@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Image } from 'react-native';
+import { Image, StyleSheet } from 'react-native';
 
 export default class Bathroom extends Component {
   state = { 
@@ -13,9 +13,24 @@ export default class Bathroom extends Component {
 
     return (
       <Image
-      style={{width: active ? 30 : 20, height: active ? 33 : 22}}
+      style={active ? styles.active : styles.img}
       source={{uri: active ? imgActive : img}}
       />
     );
   }
 }
+
+const styles = StyleSheet.create({
+  active: {
+    width:  26, 
+    height:  28,
+    shadowColor: '#fff',
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 1,
+    shadowRadius: 0
+  },
+  img: {
+    width: 20.7, 
+    height: 23
+  }
+})

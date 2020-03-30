@@ -6,9 +6,12 @@ import LivingroomIcon from './icons/LivingroomIcon'
 import { Context } from './../context'
 import { getMenu } from './../actions/menu';
 import { getDashboard } from './../actions/dashboard';
-import { StyleSheet, View, TouchableHighlight } from 'react-native'
+import { Dimensions, StyleSheet, View, TouchableHighlight } from 'react-native'
 
 import * as theme from '../theme';
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 function Menu(props) {
   const { state, dispatch } = useContext(Context);
@@ -61,18 +64,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   menuElem: {
-    width: 64,
-    height: 64,
+    width: windowWidth / 8,
+    height: windowWidth / 8,
     backgroundColor: '#E7E7E7',
-    borderRadius: 10,
+    borderRadius: windowWidth / 36,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 25,
-    marginBottom: 25
+    marginTop: windowWidth / 28,
+    marginBottom: windowWidth / 28
   },
   menuElemActive: {
     transform: [{
-      scale: 1.2
+      scale: 1.3
     }],
     backgroundColor: '#ffc98f',
     shadowColor: "#ffc98f",

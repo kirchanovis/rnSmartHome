@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Picker, Text } from 'react-native'
+import { StyleSheet, View, Picker, Text, Platform } from 'react-native'
 import moment from "moment";
 
 import * as theme from '../theme';
@@ -32,7 +32,7 @@ export default class PickerTime extends Component {
                         <Text style={styles.pickerTitle}>From</Text>
                         <Picker
                             selectedValue={this.props.start}
-                            style={{ height: 50, width: 100 }}
+                            style={{ height: 50, width: 120, marginTop: 10 }}
                             onValueChange={(itemValue, itemIndex) =>
                                 this.setState({ language: itemValue })
                             }
@@ -47,7 +47,7 @@ export default class PickerTime extends Component {
                         <Text style={styles.pickerTitle}>To</Text>
                         <Picker
                             selectedValue={this.props.end}
-                            style={{ height: 10, width: 100 }}
+                            style={styles.picker}
                             onValueChange={(itemValue, itemIndex) =>
                                 this.setState({ language: itemValue })
                             }
@@ -70,11 +70,17 @@ const styles = StyleSheet.create({
     pickerTime: {
         flex:1
     },
+    picker: {
+        marginTop: Platform.OS === 'ios' ? 10 : 20,
+        height: 30,
+        width: 120
+    },
     pickerItem: {
         fontSize: 16,
+        padding: 20
     },
     caption: {
-        paddingTop: 40
+        paddingTop: 10
     },
     formTitle: {
         fontSize: 14,

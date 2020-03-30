@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Text, TouchableHighlight } from 'react-native'
+import { StyleSheet, View, Text, TouchableHighlight, Dimensions } from 'react-native'
 import * as theme from './../theme';
 
 // import PlayIcon from './icons/PlayIcon'
 import NextIcon from './icons/NextIcon'
 import PreviuosIcon from './icons/PreviuosIcon'
 import PauseIcon from './icons/PauseIcon'
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 class Music extends Component {
 
@@ -58,9 +61,9 @@ const styles = StyleSheet.create({
     music: {
         flex: 1,
         backgroundColor: '#fff',
-        paddingLeft: '5%',
-        paddingRight: '5%',
-        borderRadius: 15,
+        paddingLeft: windowWidth / 32,
+        paddingRight: windowWidth / 32,
+        borderRadius: windowWidth / 32,
         borderColor: '#eee',
         shadowColor: "#000",
         shadowOffset: {
@@ -90,25 +93,25 @@ const styles = StyleSheet.create({
     },
     round: {
         backgroundColor: '#ffc98f',
-        flexBasis: 50,
-        height: 50,
-        borderRadius: 50,
+        flexBasis:  windowWidth / 10,
+        height: windowWidth / 10,
+        borderRadius:  windowWidth / 10,
         position: 'relative',
         zIndex: 1
     },
     roundSmall: {
         position: 'absolute',
-        top: 15,
-        left: 15,
+        top: windowWidth / 40,
+        left: windowWidth / 40,
         backgroundColor: '#fff',
-        width: 20,
-        height: 20,
-        borderRadius: 10,
+        width: windowWidth / 20,
+        height: windowWidth / 20,
+        borderRadius: windowWidth / 10,
         zIndex: 2
     },
     caption: {
         flex: 2,
-        paddingLeft: '5%',
+        paddingLeft:  windowWidth / 32,
     },
     sound: {
         fontSize: 13,

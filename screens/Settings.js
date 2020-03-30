@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { StyleSheet, View, Text, Image, Switch, Slider } from 'react-native';
+import { StyleSheet, View, Text, Image, Switch, Slider, Dimensions } from 'react-native';
 
 import * as theme from '../theme';
 import CustomHeader from './../components/CustomHeader'
@@ -7,6 +7,9 @@ import PickerTime from './../components/PickerTime'
 import Music from './../components/Music'
 
 import { Context } from './../context'
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 function Settings(props) {
   const { state } = useContext(Context),
@@ -50,6 +53,7 @@ function Settings(props) {
                         style={styles.formSwitch}
                         trackColor={{ false: '#d4d4d4', true: '#fec88e' }}
                         ios_backgroundColor="#d4d4d4"
+                        thumbColor="#fff"
                         value={data.light.power}
                       />
                     </View>
@@ -61,6 +65,7 @@ function Settings(props) {
                             <Slider
                               style={styles.slider}
                               minimumTrackTintColor="#fec88e"
+                              thumbTintColor="#fff"
                               value={data.light && data.light.intensity}
                             />
                           </>
@@ -119,8 +124,8 @@ const styles = StyleSheet.create({
     flex: 2
   },
   imageRoom: {
-    width: 300,
-    height: 350,
+    width: windowWidth / 1.4,
+    height: windowHeight / 3,
     padding: 20,
     resizeMode: 'contain'
   },
@@ -141,12 +146,11 @@ const styles = StyleSheet.create({
     flex: 1
   },
   contentTop: {
-    flex: 5,
+    flex: 4,
     flexDirection: 'column'
   },
   title: {
-    flexDirection: 'row',
-    paddingTop: 20
+    flexDirection: 'row'
   },
   titleText: {
     fontSize: 26,
@@ -163,18 +167,20 @@ const styles = StyleSheet.create({
   },
   formElem: {
     flex: 1,
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
+    alignItems: 'flex-start'
   },
   formTitle: {
     fontSize: 14,
     fontWeight: 'bold',
     color: '#434141',
-    paddingBottom: 30
+    paddingBottom: windowHeight / 48
   },
   formSwitch: {
+    paddingLeft: 0
   },
   slider: {
-    width: '50%'
+    width: '100%',
   },
   contentBottom: {
     flex: 5

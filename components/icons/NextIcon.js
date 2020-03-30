@@ -11,7 +11,7 @@ export default class NextIcon extends Component {
 
     return (
       <Image
-      style={{width: 14, height: 16}}
+      style={{width: 13, height: 15}}
       source={{uri: img}}
       />
     );

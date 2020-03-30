@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { StyleSheet, View, Text, Image, FlatList } from 'react-native'
+import { StyleSheet, View, Text, Image, FlatList, Dimensions } from 'react-native'
 import * as theme from './../theme';
 import Menu from './../components/Menu';
 import CustomHeader from './../components/CustomHeader'
@@ -8,6 +8,9 @@ import HumidityIcons from './../components/icons/HumidityIcons'
 import TemperatureIcons from './../components/icons/TemperatureIcons'
 
 import { Context } from './../context'
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 function Dashboard(props) {
     const { state } = useContext(Context),
@@ -174,13 +177,12 @@ const styles = StyleSheet.create({
         flex: 2,
         justifyContent: 'center',
         zIndex: 2,
-        marginTop: 25,
-        marginLeft: 20,
-        marginBottom: 40,
-        borderRadius: 20,
+        marginTop: windowHeight / 32,
+        marginLeft: windowWidth / 18,
+        marginBottom: windowHeight / 64,
+        borderRadius: windowWidth / 18,
         width: '80%',
         overflow: 'hidden',
-        borderRadius: 25,
         shadowColor: "#000",
         shadowOffset: {
             width: 5,
@@ -188,27 +190,29 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.3,
         shadowRadius: 4.65,
-        elevation: 2,
+        elevation: 2
     },
     wheather: {
         flex: 1,
         flexDirection: 'row',
-        marginLeft: 20,
+        marginLeft: windowWidth / 36,
         width: '100%',
-        marginBottom: 20
+        marginBottom: windowWidth / 36
     },
     weatherBlock: {
         flex: 1,
         backgroundColor: '#fff',
-        margin: 10,
-        borderRadius: 15,
+        marginTop: windowWidth / 36,
+        marginLeft: windowWidth / 36,
+        marginRight: windowWidth / 36,
+        borderRadius: windowWidth / 36,
         borderColor: '#eee',
         borderWidth: 1,
         flexDirection: 'row'
     },
     weatherContent: {
-        marginTop: 20,
-        marginBottom: 20,
+        marginTop: windowWidth / 36,
+        marginBottom: windowWidth / 36,
         flex: 10,
         flexDirection: 'column'
     },
@@ -222,12 +226,13 @@ const styles = StyleSheet.create({
         flex: 2
     },
     wContentBottom: {
-        flex: 2
+        flex: 4,
+        justifyContent: 'flex-end'
     },
     wContentCelc: {
         flexDirection: 'row',
         color: '#434141',
-        paddingTop: 10
+        paddingTop: windowWidth / 24
     },
     wContentNum: {
         fontSize: 28,
@@ -235,17 +240,19 @@ const styles = StyleSheet.create({
     },
     wContentTitle: {
         fontSize: 14,
-        paddingTop: 2,
+        paddingTop: 3,
         paddingLeft: 2
     },
     wContentText: {
         paddingTop: 10,
-        color: '#a1a0a0'
+        color: '#a1a0a0',
+        fontSize: 12,
     },
     blockRoomAux: {
         position: 'relative',
         justifyContent: 'center',
         zIndex: 3,
+        backgroundColor: 'green'
     },
     imageRoom: {
         position: 'absolute',
@@ -253,7 +260,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         zIndex: 1,
-        margin: -250
+        width: windowWidth / 1.5,
+        height: windowHeight / 2,
+        resizeMode: 'cover',
     },
     imageTitleBlock: {
         zIndex: 4,
@@ -280,7 +289,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     blockList: {
-        flex: 2,
+        flex: 3,
         flexDirection: 'column'
     },
     listElem: {
@@ -289,7 +298,8 @@ const styles = StyleSheet.create({
         color: '#d1cfcf',
         fontWeight: 'bold',
         textAlign: 'center',
-        padding: 25,
+        paddingTop: 20,
+        paddingBottom: 25,
 
     },
     listElemActive: {
