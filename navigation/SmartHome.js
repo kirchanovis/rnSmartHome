@@ -4,33 +4,41 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { 
   createDrawerNavigator,
   DrawerContentScrollView,
-  DrawerItemList,
+  // DrawerItemList,
   DrawerItem
  } from '@react-navigation/drawer';
- import { StyleSheet } from 'react-native'
+ import { StyleSheet, View, Dimensions } from 'react-native'
  import Animated from 'react-native-reanimated';
 import Settings from './../screens/Settings'
 import Dashboard from './../screens/Dashboard'
 
-const Drawer = createDrawerNavigator();
+import HomeIcon from './../components/icons/HomeIcon'
+import SettingsIcon from './../components/icons/SettingsIcon'
 
+
+const Drawer = createDrawerNavigator(),
+  windowHeight = Dimensions.get('window').height;
 
 function CustomDrawerContent(props) {
   return (
     <DrawerContentScrollView {...props}>
       {/*<DrawerItemList {...props} />*/}
-      <DrawerItem 
-        label="Custom"
-        labelStyle={styles.drawerLabel}
-        style={styles.drawerItem}
-        onPress={() => props.navigation.navigate('Settings')}
-      />
-      <DrawerItem 
-        label="Custom1"
-        labelStyle={styles.drawerLabel}
-        style={styles.drawerItem}
-        onPress={() => props.navigation.navigate('Dashboard')}
-      />
+      <View style={styles.drawers}>
+        <DrawerItem 
+          label="Dashboard"
+          labelStyle={styles.drawerLabel}
+          style={styles.drawerItem}
+          onPress={() => props.navigation.navigate('Dashboard')}
+          icon={() => <HomeIcon />}
+        />
+        <DrawerItem 
+          label="Settings"
+          labelStyle={styles.drawerLabel}
+          style={styles.drawerItem}
+          onPress={() => props.navigation.navigate('Settings')}
+          icon={() => <SettingsIcon />}
+        />
+      </View>
     </DrawerContentScrollView>
   );
 }
@@ -81,6 +89,11 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.44,
     shadowRadius: 10.32,
     elevation: 5,
+  },
+  drawers: {
+    flex: 1,
+    height: windowHeight / 2,
+    justifyContent: 'center',
   },
   drawerStyles: { flex: 1, width: '50%', backgroundColor: '#3a3434', borderWidth: 0},
   drawerItem: { alignItems: 'flex-start', marginVertical: 0, color: '#fff' },

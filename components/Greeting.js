@@ -8,7 +8,7 @@ class Greeting extends Component {
         return (
             <View style={styles.greeting}>
                 <View style={styles.name}>
-                    <Text style={styles.hello} >Hello</Text><Text style={styles.nameText} >, Anna</Text>
+                    <Text style={styles.hello} >Hello</Text><Text style={styles.nameText} >, Ilya</Text>
                 </View>
                 <View>
                     <Text style={styles.question}>Good evening, what are you up to?</Text>

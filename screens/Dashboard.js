@@ -4,8 +4,8 @@ import * as theme from './../theme';
 import Menu from './../components/Menu';
 import CustomHeader from './../components/CustomHeader'
 import Greeting from './../components/Greeting'
-import Humidity from './../components/icons/Humidity'
-import Temperature from './../components/icons/Temperature'
+import HumidityIcons from './../components/icons/HumidityIcons'
+import TemperatureIcons from './../components/icons/TemperatureIcons'
 
 import { Context } from './../context'
 
@@ -82,7 +82,7 @@ function Dashboard(props) {
                                     <View style={styles.weatherLeft}></View>
                                     <View style={styles.weatherContent}>
                                         <View style={styles.wContentTop}>
-                                            <Temperature />
+                                            <TemperatureIcons />
                                         </View>
                                         <View style={styles.wContentBottom}>
                                             <View style={styles.wContentCelc}>
@@ -98,7 +98,7 @@ function Dashboard(props) {
                                     <View style={styles.weatherLeft}></View>
                                     <View style={styles.weatherContent}>
                                         <View style={styles.wContentTop}>
-                                            <Humidity />
+                                            <HumidityIcons />
                                         </View>
                                         <View style={styles.wContentBottom}>
                                             <View style={styles.wContentCelc}>

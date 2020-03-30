@@ -37,7 +37,7 @@ export const bathroom = {
     humidity: 54,
     light: {
         image: require('./../../assets/light/bathroom.png'),
-        power: true,
+        power: false,
         intensity: 0.43,
         schFrom: '09:00',
         schTo: '18:00'

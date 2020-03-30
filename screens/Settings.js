@@ -16,7 +16,7 @@ function Settings(props) {
   return (
     <>
       {
-        data && (
+        data.light && (
           <>
             <View style={styles.bg}>
               <View style={styles.bgLeft}></View>
@@ -24,7 +24,7 @@ function Settings(props) {
                 <View style={styles.bgRightTop}>
                   <Image
                     style={styles.imageRoom}
-                    source={data.light && data.light.image}
+                    source={data.light.image}
                   />
                 </View>
                 <View style={styles.bgRightBottom}></View>
@@ -49,25 +49,36 @@ function Settings(props) {
                       <Switch
                         style={styles.formSwitch}
                         trackColor={{ false: '#d4d4d4', true: '#fec88e' }}
-                        ios_backgroundColor="#d4d4d4" 
-                        value={data.light && data.light.power}
+                        ios_backgroundColor="#d4d4d4"
+                        value={data.light.power}
                       />
                     </View>
                     <View style={styles.formElem}>
-                      <Text style={styles.formTitle}>Intensity</Text>
-                      <Slider
-                        style={styles.slider}
-                        minimumTrackTintColor="#fec88e"
-                        value={data.light && data.light.intensity}
-                      />
+                      {
+                        data.light.power && (
+                          <>
+                            <Text style={styles.formTitle}>Intensity</Text>
+                            <Slider
+                              style={styles.slider}
+                              minimumTrackTintColor="#fec88e"
+                              value={data.light && data.light.intensity}
+                            />
+                          </>
+                        )
+                      }
                     </View>
+
                   </View>
                 </View>
                 <View style={styles.contentBottom}>
-                  <PickerTime
-                    start={data.light && data.light.schFrom}
-                    end={data.light && data.light.schTo}
-                  />
+                  {
+                    data.light.power && (
+                      <PickerTime
+                        start={data.light && data.light.schFrom}
+                        end={data.light && data.light.schTo}
+                      />
+                    )
+                  }
                 </View>
                 <View style={styles.footer}>
                   <Music />
@@ -108,8 +119,8 @@ const styles = StyleSheet.create({
     flex: 2
   },
   imageRoom: {
-    width: 250,
-    height: 250,
+    width: 300,
+    height: 350,
     padding: 20,
     resizeMode: 'contain'
   },
