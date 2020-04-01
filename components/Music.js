@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { StyleSheet, View, Text, TouchableHighlight, Dimensions } from 'react-native'
 import * as theme from './../theme';
 
@@ -8,54 +8,49 @@ import PreviuosIcon from './icons/PreviuosIcon'
 import PauseIcon from './icons/PauseIcon'
 
 const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
 
-class Music extends Component {
+export default function Music() {
 
-    render() {
-        return (
-            <View style={styles.music}>
-                <View style={styles.info}>
-                    <View style={styles.round}>
-                        <View style={styles.roundSmall}></View>
-                    </View>
-                    <View style={styles.caption}>
-                        <Text style={styles.sound}>Way Back Home</Text>
-                        <Text style={styles.author}>Shaun</Text>
-                    </View>
+    return (
+        <View style={styles.music}>
+            <View style={styles.info}>
+                <View style={styles.round}>
+                    <View style={styles.roundSmall}></View>
                 </View>
-                <View style={styles.control}>
-                    <View style={styles.controlElem}>
-                        <TouchableHighlight
-                            onPress={() => { alert('Previuos') }}
-                            underlayColor="#eee"
-                        >
-                            <PreviuosIcon />
-                        </TouchableHighlight>
-                    </View>
-                    <View style={styles.controlElem}>
-                        <TouchableHighlight
-                            onPress={() => { alert('Pause') }}
-                            underlayColor="#eee"
-                        >
-                            <PauseIcon />
-                        </TouchableHighlight>
-                    </View>
-                    <View style={styles.controlElem}>
-                        <TouchableHighlight
-                            onPress={() => { alert('Next') }}
-                            underlayColor="#eee"
-                        >
-                            <NextIcon />
-                        </TouchableHighlight>
-                    </View>
+                <View style={styles.caption}>
+                    <Text style={styles.sound}>Way Back Home</Text>
+                    <Text style={styles.author}>Shaun</Text>
                 </View>
             </View>
-        )
-    }
+            <View style={styles.control}>
+                <View style={styles.controlElem}>
+                    <TouchableHighlight
+                        onPress={() => { alert('Previuos') }}
+                        underlayColor="#eee"
+                    >
+                        <PreviuosIcon />
+                    </TouchableHighlight>
+                </View>
+                <View style={styles.controlElem}>
+                    <TouchableHighlight
+                        onPress={() => { alert('Pause') }}
+                        underlayColor="#eee"
+                    >
+                        <PauseIcon />
+                    </TouchableHighlight>
+                </View>
+                <View style={styles.controlElem}>
+                    <TouchableHighlight
+                        onPress={() => { alert('Next') }}
+                        underlayColor="#eee"
+                    >
+                        <NextIcon />
+                    </TouchableHighlight>
+                </View>
+            </View>
+        </View>
+    )
 }
-
-export default Music;
 
 const styles = StyleSheet.create({
     music: {
@@ -93,9 +88,9 @@ const styles = StyleSheet.create({
     },
     round: {
         backgroundColor: '#ffc98f',
-        flexBasis:  windowWidth / 10,
+        flexBasis: windowWidth / 10,
         height: windowWidth / 10,
-        borderRadius:  windowWidth / 10,
+        borderRadius: windowWidth / 10,
         position: 'relative',
         zIndex: 1
     },
@@ -111,7 +106,7 @@ const styles = StyleSheet.create({
     },
     caption: {
         flex: 2,
-        paddingLeft:  windowWidth / 32,
+        paddingLeft: windowWidth / 32,
     },
     sound: {
         fontSize: 13,

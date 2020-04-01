@@ -1,14 +1,14 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+// import { createStackNavigator } from '@react-navigation/stack';
 import { 
   createDrawerNavigator,
   DrawerContentScrollView,
   // DrawerItemList,
   DrawerItem
  } from '@react-navigation/drawer';
- import { StyleSheet, View, Dimensions } from 'react-native'
- import Animated from 'react-native-reanimated';
+import { StyleSheet, View, Dimensions } from 'react-native'
+// import Animated from 'react-native-reanimated';
 import Settings from './../screens/Settings'
 import Dashboard from './../screens/Dashboard'
 
@@ -44,18 +44,6 @@ function CustomDrawerContent(props) {
 }
 
 function SmartHome() {
-  const [progress, setProgress] = React.useState(new Animated.Value(0));
-  const scale = Animated.interpolate(progress, {
-    inputRange: [0, 1],
-    outputRange: [1, 0.8],
-  });
-  const borderRadius = Animated.interpolate(progress, {
-    inputRange: [0, 1],
-    outputRange: [1, 16],
-  });
-
-  
-  const animatedStyle = { borderRadius, transform: [{ scale }] };
 
   return (
     <NavigationContainer>
@@ -64,7 +52,6 @@ function SmartHome() {
         overlayColor="transparent"
         drawerStyle={styles.drawerStyles}
         drawerContent={props => {
-          setProgress(props.progress);
           return <CustomDrawerContent {...props} />;
         }}
       >

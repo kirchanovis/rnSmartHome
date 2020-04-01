@@ -1,20 +1,18 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { StyleSheet, View, Image } from 'react-native'
 
 import * as theme from '../theme';
 
-export default class Avatar extends Component {
-  render() {
-    return (
-      <View style={styles.avatar}>
-        <Image
-          style={styles.avatarImage}
-          source={{uri: 'https://scontent-frt3-1.xx.fbcdn.net/v/t1.0-1/c0.0.160.160a/p160x160/10363610_1396292840681724_5288584348441541030_n.jpg?_nc_cat=108&_nc_sid=dbb9e7&_nc_ohc=tVuXTrktSdAAX8qZ_GM&_nc_ht=scontent-frt3-1.xx&oh=36a2edf7a6c94c9191470e7385fbd0f0&oe=5EA71370'}}
-        />
-        <View style={styles.avatarOnline}></View>
-      </View>
-    );
-  }
+export default function Avatar() {
+  return (
+    <View style={styles.avatar}>
+    <Image
+      style={styles.avatarImage}
+      source={{uri: 'https://scontent-frt3-1.xx.fbcdn.net/v/t1.0-1/c0.0.160.160a/p160x160/10363610_1396292840681724_5288584348441541030_n.jpg?_nc_cat=108&_nc_sid=dbb9e7&_nc_ohc=tVuXTrktSdAAX8qZ_GM&_nc_ht=scontent-frt3-1.xx&oh=36a2edf7a6c94c9191470e7385fbd0f0&oe=5EA71370'}}
+    />
+    <View style={styles.avatarOnline}></View>
+  </View>
+  )
 }
 
 const styles = StyleSheet.create({

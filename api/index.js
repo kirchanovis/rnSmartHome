@@ -5,7 +5,7 @@ import { menu } from './mock/menu'
 import { livingroom, kitchen, bathroom, bedroom } from './mock/dashboard'
 
 const mock = new MockAdapter(axios, {
-    delayResponse: 1000
+    delayResponse: 1
 });
 
 mock.onGet('/menu').reply(200, [

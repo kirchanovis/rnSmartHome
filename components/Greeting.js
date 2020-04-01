@@ -1,24 +1,20 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 import * as theme from './../theme';
 
-class Greeting extends Component {
+export default function Greeting() {
 
-    render() {
-        return (
-            <View style={styles.greeting}>
-                <View style={styles.name}>
-                    <Text style={styles.hello} >Hello</Text><Text style={styles.nameText} >, Ilya</Text>
-                </View>
-                <View>
-                    <Text style={styles.question}>Good evening, what are you up to?</Text>
-                </View>
+    return (
+        <View style={styles.greeting}>
+            <View style={styles.name}>
+                <Text style={styles.hello} >Hello</Text><Text style={styles.nameText} >, Ilya</Text>
             </View>
-        )
-    }
+            <View>
+                <Text style={styles.question}>Good evening, what are you up to?</Text>
+            </View>
+        </View>
+    )
 }
-
-export default Greeting;
 
 const styles = StyleSheet.create({
     greeting: {

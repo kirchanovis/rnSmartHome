@@ -8,10 +8,9 @@ import { getMenu } from './../actions/menu';
 import { getDashboard } from './../actions/dashboard';
 import { Dimensions, StyleSheet, View, TouchableHighlight } from 'react-native'
 
-import * as theme from '../theme';
+// import * as theme from '../theme';
 
 const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
 
 function Menu(props) {
   const { state, dispatch } = useContext(Context);
