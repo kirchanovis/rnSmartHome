@@ -5,7 +5,7 @@ import moment from "moment";
 // import * as theme from '../theme';
 
 export default function PickerTime(props) {
-    const [timeBetween, setTimeBetween] = useState([]),
+    const [ timeBetween, setTimeBetween ] = useState([]),
         {
             start,
             end

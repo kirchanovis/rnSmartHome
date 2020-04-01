@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext, useRef } from 'react'
 import KitchenIcon from './icons/KitchenIcon'
 import BathroomIcon from './icons/BathroomIcon'
 import BedroomIcon from './icons/BedroomIcon'
@@ -6,14 +6,15 @@ import LivingroomIcon from './icons/LivingroomIcon'
 import { Context } from './../context'
 import { getMenu } from './../actions/menu';
 import { getDashboard } from './../actions/dashboard';
-import { Dimensions, StyleSheet, View, TouchableHighlight } from 'react-native'
+import { Dimensions, StyleSheet, View, TouchableWithoutFeedback, Animated, Easing, Platform } from 'react-native'
 
 // import * as theme from '../theme';
 
 const windowWidth = Dimensions.get('window').width;
 
 function Menu(props) {
-  const { state, dispatch } = useContext(Context);
+  const { state, dispatch } = useContext(Context),
+    scale = useRef(new Animated.Value(1)).current;
   
   function Icons(props) {
     const components = {
@@ -31,8 +32,24 @@ function Menu(props) {
     getDashboard(dispatch, 1)
   }, [])
 
-  function updateDashboard(id) {
-    getDashboard(dispatch, id)
+  useEffect(() => {
+    Animated.spring(scale,{
+      toValue: 1.3,
+      duration: 30,
+      Easing: Easing
+    }).start()
+  }, [props.active])
+
+  function pressOutScale(id) {
+    const val = Platform.OS === 'ios' ? 0.9 : 1.2;
+
+    Animated.timing(scale,{
+      toValue: val,
+      duration: 30,
+      Easing: Easing
+    }).start(()=> {
+      getDashboard(dispatch, id)
+    })
   }
 
   return (
@@ -40,14 +57,24 @@ function Menu(props) {
       {
         state.menu.data.map( item => 
           <View key={item.key}>
-            <TouchableHighlight
-              onPress={() => { updateDashboard(item.key) }}
-              underlayColor="#eee"
+            <TouchableWithoutFeedback
+              onPress={() => { pressOutScale(item.key) }}
             >
-              <View style={StyleSheet.flatten([styles.menuElem, props.active === item.name && styles.menuElemActive])}>
+              <Animated.View style={StyleSheet.flatten([
+                styles.menuElem,
+                props.active === item.name && styles.menuElemActive,
+                props.active === item.name && 
+                  {
+                    transform: [
+                      {
+                        scale: scale
+                      }
+                    ]
+                  }
+              ])}>
                 <Icons name={item.name} active={props.active === item.name} />
-              </View>
-            </TouchableHighlight>
+              </Animated.View>
+            </TouchableWithoutFeedback>
           </View>
         )
       }
@@ -73,16 +100,13 @@ const styles = StyleSheet.create({
     marginBottom: windowWidth / 28
   },
   menuElemActive: {
-    transform: [{
-      scale: 1.3
-    }],
     backgroundColor: '#ffc98f',
     shadowColor: "#ffc98f",
     shadowOffset: {
       width: 0,
       height: 5,
     },
-    shadowOpacity: 0.5,
+    shadowOpacity: Platform.OS === 'ios' ? 0.7 : 0.2,
     shadowRadius: 4.65,
     elevation: 2
 
